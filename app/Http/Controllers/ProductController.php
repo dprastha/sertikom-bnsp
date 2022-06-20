@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\Product\ProductCollection;
+use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -13,9 +17,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filters = $request->only('search', 'trashed');
+
+        return Inertia::render('Products/Index', [
+            'filters' => $filters,
+            'products' => new ProductCollection(
+                Product::filter($filters)
+                    ->orderBy('name')
+                    ->paginate()
+            ),
+        ]);
     }
 
     /**
@@ -25,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Products/Create');
     }
 
     /**
@@ -36,18 +49,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
-    }
+        $product = Product::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
@@ -58,7 +64,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return Inertia::render('Products/Edit', [
+            'product' => new ProductResource($product),
+        ]);
     }
 
     /**
@@ -70,7 +78,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -81,6 +93,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Product deleted successfully.');
     }
 }

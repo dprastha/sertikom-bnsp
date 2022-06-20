@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,9 @@ Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
+
+// Products
+Route::resource('products', ProductController::class)->except('show');
 
 // Users
 
