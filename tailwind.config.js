@@ -2,13 +2,19 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: [
-    // prettier-ignore
+  // purge: [
+  //   // prettier-ignore
+  //   './resources/**/*.blade.php',
+  //   './resources/**/*.js',
+  //   './resources/**/*.vue',
+  // ],
+
+  content: [
     './resources/**/*.blade.php',
     './resources/**/*.js',
     './resources/**/*.vue',
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
       transparent: 'transparent',
