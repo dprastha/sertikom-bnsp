@@ -35,7 +35,7 @@
                     <div class="w-full">
                         <nav class="flex items-center justify-between py-4 navbar navbar-expand-lg">
                             <a class="navbar-brand mr-5" href="index.html">
-                                <img src="{{ asset('img/logo/logo.svg') }}" alt="Logo" />
+                                {{-- <img src="{{ asset('img/logo/logo.svg') }}" alt="Logo" /> --}}
                             </a>
                             <button class="block navbar-toggler focus:outline-none lg:hidden" type="button"
                                 data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne"
@@ -63,10 +63,10 @@
                                         <a class="page-scroll" href="#why">Why</a>
                                     </li>
                                     <li class="nav-item ml-5 lg:ml-11">
-                                        <a class="page-scroll" href="#pricing">Pricing</a>
-                                    </li>
-                                    <li class="nav-item ml-5 lg:ml-11">
                                         <a class="page-scroll" href="#testimonials">Clients</a>
+                                    </li>
+                                    <li class="nav-item ml-5 lg:ml-11 bg-slate-400 p-2 rounded">
+                                        <a class="page-scroll" href="{{ route('login') }}">Login</a>
                                     </li>
                                 </ul>
                             </div>
@@ -92,10 +92,10 @@
                     <div class="hero-content mb-0 lg:mb-6">
                         <h1
                             class="text-white mb-9 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-                            Launch Your SaaS Website in Minutes!</h1>
+                            Get Ready For Your Ride!</h1>
                         <p class="text-white text-lg mb-10 xl:pr-18 2xl:pr-120">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                            Designed to push you to the limit in challenging off-road, yet reactive and maneuverable on
+                            road
                         </p>
                         <a href="javascript:void(0)" class="main-btn border-btn btn-hover mb-2">Get Started</a>
                         <a href="#features" class="scroll-bottom"> <i class="lni lni-arrow-down"></i></a>
@@ -103,7 +103,8 @@
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="hero-img pt-8 lg:pt-0">
-                        <img src="{{ asset('img/hero/hero-img.png') }}" alt="" class="w-full lg:w-auto">
+                        <img src="{{ asset('img/hero/hero-motor.jpg') }}" alt=""
+                            class="w-0.5 lg:w-auto rounded-md drop-shadow-md">
                     </div>
                 </div>
             </div>
@@ -115,42 +116,19 @@
     <section id="features" class="feature-section pt-120">
         <div class="container">
             <div class="row flex justify-center">
-                <div class="w-full md:w-8/12 lg:w-4/12">
-                    <div class="text-center px-3 2xl:px-10 py-8">
-                        <div class="feature-icon">
-                            <i class="lni lni-bootstrap"></i>
-                        </div>
-                        <div class="content">
-                            <h3 class="mb-5">Bootstrap 5</h3>
-                            <p class="text-lg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-8/12 lg:w-4/12">
-                    <div class="text-center px-3 2xl:px-10 py-8">
-                        <div class="feature-icon">
-                            <i class="lni lni-layout"></i>
-                        </div>
-                        <div class="content">
-                            <h3 class="mb-5">Clean Design</h3>
-                            <p class="text-lg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore</p>
+                @foreach ($products as $product)
+                    <div class="w-full md:w-8/12 lg:w-4/12">
+                        <div class="text-center px-3 2xl:px-10 py-8">
+                            <div class="feature-icon">
+                                <i class="lni lni-bootstrap"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="mb-5">{{ $product->name }}</h3>
+                                <p class="text-lg">{{ $product->description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="w-full md:w-8/12 lg:w-4/12">
-                    <div class="text-center px-3 2xl:px-10 py-8">
-                        <div class="feature-icon">
-                            <i class="lni lni-coffee-cup"></i>
-                        </div>
-                        <div class="content">
-                            <h3 class="mb-5">Easy to Use</h3>
-                            <p class="text-lg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -162,7 +140,8 @@
             <div class="row flex items-center">
                 <div class="w-full lg:w-1/2">
                     <div class="about-img relative z-10 pt-19 pb-19 mb-18 lg:mb-0">
-                        <img src="{{ asset('img/about/about-1.png') }}" alt="" class="w-100">
+                        <img src="{{ asset('img/hero/hero-motor-bg.jpg') }}" alt=""
+                            class="w-11/12 rounded-lg mr-5">
                         <img src="{{ asset('img/about/about-left-shape.svg') }}" alt="" class="shape-1">
                         <img src="{{ asset('img/about/left-dots.svg') }}" alt="" class="shape shape-2">
                     </div>
@@ -170,11 +149,10 @@
                 <div class="w-full lg:w-1/2">
                     <div class="about-content">
                         <div class="section-title mb-8">
-                            <h1 class="mb-6 ">Perfect Solution Thriving Online Business</h1>
-                            <p class="">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed dinonumy
-                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                                vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                                takimata sanctus est Lorem.Lorem ipsum dolor sit amet.</p>
+                            <h3 class="mb-10">We have a long history of product innovation, developing mechanical and
+                                electronic solutions that have improved the motorcycle riding experience. Over time we
+                                have been able to take the relationship between the rider and the bike to higher levels,
+                                creating an increasingly "connected" experience between the two sides. .</p>
                         </div>
                         <a href="javascript:void(0)" class="main-btn btn-hover border-btn ">Discover More</a>
                     </div>
@@ -310,164 +288,6 @@
         </div>
     </section>
     <!-- ========================= feature-section end ========================= -->
-
-    <!-- ========================= pricing-section end ========================= -->
-    <section id="pricing" class="pricing-section relative z-10 pt-120 pb-120">
-        <div class="container">
-            <div class="row flex justify-center">
-                <div class="w-full md:w-9/12 lg:w-8/12 xl:w-6/12">
-                    <div class="section-title text-center mb-9">
-                        <h1 class="mb-6 ">Choose a Plan</h1>
-                        <p class="">Lorem ipsum dolor sit amet consetetur sadipscing elitr sswed diam nonumy
-                            eirmod tempor nvidunt.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pricing-nav-wrapper mb-15">
-                <ul class="pricing-nav nav nav-pills flex justify-center">
-                    <li class="nav-item">
-                        <button class="active" data-tab-target="#monthlyPlan">Monthly</button>
-                    </li>
-                    <li class="nav-item">
-                        <button data-tab-target="#yearlyPlan">Yearly</button>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tab-content pricing_content">
-                <div class="tab-pane active" id="monthlyPlan" data-tab-content>
-                    <div class="row flex flex-wrap justify-center">
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$36</h1>
-                                    <h3 class="package-name">Basic Account</h3>
-                                </div>
-                                <div class="content mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> Single User </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-close"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-close"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover border-btn">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$56</h1>
-                                    <h3 class="package-name">Standard Account</h3>
-                                </div>
-                                <div class="content mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 20+ Users </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$89</h1>
-                                    <h3 class="package-name">Premium Account</h3>
-                                </div>
-                                <div class="content mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Users </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover border-btn">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="yearlyPlan" data-tab-content>
-                    <div class="row flex flex-wrap justify-center">
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$136</h1>
-                                    <h3 class="package-name">Basic Account</h3>
-                                </div>
-                                <div class="content mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> Single User </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-close"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-close"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover border-btn">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$156</h1>
-                                    <h3 class="package-name">Standard Account</h3>
-                                </div>
-                                <div class="content mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 20+ Users </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-close"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-10/12 md:w-8/12 lg:w-4/12">
-                            <div class="single-pricing mx-4">
-                                <div class="pricing-header">
-                                    <h1 class="mb-8 text-theme-color">$189</h1>
-                                    <h3 class="package-name">Premium Account</h3>
-                                </div>
-                                <div class="mb-8 2xl:pl-13">
-                                    <ul class="pricing-feature">
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Acces</li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Users </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Unlimited Storage</li>
-                                        <li> <i class="lni lni-checkmark active"></i> 24/7 Support </li>
-                                        <li> <i class="lni lni-checkmark active"></i> Free Future Updates</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-btn">
-                                    <a href="javascript:void(0)" class="main-btn btn-hover border-btn">Get Start</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ========================= pricing-section end ========================= -->
 
     <!-- ========================= testimonial-section start ========================= -->
     <section id="testimonials" class="testimonial-section pt-8 pb-25 sm:p-0 lg:py-170">
