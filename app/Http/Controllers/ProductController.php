@@ -55,9 +55,6 @@ class ProductController extends Controller
             $photo_path = $request->file('photo_path')->store('photo_path', 'public');
         }
 
-        // Product::create($request->validated());
-        // DB::transaction(function () use ($request) {
-
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
