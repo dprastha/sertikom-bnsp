@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{form}}
     <Head title="Create Client" />
     <h1 class="mb-8 text-3xl font-bold">
       <Link class="text-indigo-400 hover:text-indigo-600" href="/clients">Clients</Link>
