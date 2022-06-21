@@ -137,6 +137,9 @@
     <!-- ========================= about-section start ========================= -->
     <section id="about" class="about-section relative z-10 pt-150">
         <div class="container">
+            <div class="section-title text-center mb-15">
+                <h1 class="mb-6">About Us</h1>
+            </div>
             <div class="row flex items-center">
                 <div class="w-full lg:w-1/2">
                     <div class="about-img relative z-10 pt-19 pb-19 mb-18 lg:mb-0">
