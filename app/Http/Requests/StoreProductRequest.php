@@ -26,6 +26,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'required|string',
+            'photo_path' => 'nullable|string',
         ];
     }
 }
