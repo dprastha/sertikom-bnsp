@@ -178,15 +178,17 @@
                 </div>
 
                 <div class="row flex flex-wrap">
-                    <div class="w-full md:w-1/2 lg:w-4/12">
-                        <div class="p-8 lg:px-3">
-                            <div class="content">
-                                <img src="{{ asset('img/hero/hero-motor-bg.jpg') }}" alt=""
-                                    class="w-11/12 rounded-lg mr-5">
-                                <h3 class="mb-5 text-center">SaaS Focused</h3>
+                    @foreach ($clients as $client)
+                        <div class="w-full md:w-1/2 lg:w-4/12">
+                            <div class="p-8 lg:px-3">
+                                <div class="content">
+                                    <img src="{{ asset('img/hero/hero-motor-bg.jpg') }}" alt=""
+                                        class="w-11/12 rounded-lg mr-5">
+                                    <h3 class="mb-5 text-center">{{ $client->name }}</h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
