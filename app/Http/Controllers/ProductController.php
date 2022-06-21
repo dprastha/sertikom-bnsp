@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -49,7 +51,20 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        if ($request->file('photo_path')) {
+            $photo_path = $request->file('photo_path')->store('photo_path', 'public');
+        }
+
+        // Product::create($request->validated());
+        // DB::transaction(function () use ($request) {
+
+        Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'photo_path' => $photo_path,
+        ]);
+
+
 
         return redirect()
             ->route('products.index')

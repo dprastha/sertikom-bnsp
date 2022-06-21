@@ -49,7 +49,14 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        Client::create($request->validated());
+        if ($request->file('photo_path')) {
+            $photo_path = $request->file('photo_path')->store('photo_path', 'public');
+        }
+
+        Client::create([
+            'name' => $request->name,
+            'photo_path' => $photo_path,
+        ]);
 
         return redirect()
             ->route('clients.index')

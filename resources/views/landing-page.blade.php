@@ -120,10 +120,7 @@
                 @foreach ($products as $product)
                     <div class="w-full md:w-8/12 lg:w-4/12">
                         <div class="text-center px-3 2xl:px-10 py-8">
-                            {{-- <div class="feature-icon">
-                                <i class="lni lni-bootstrap"></i>
-                            </div> --}}
-                            <img src="{{ asset('img/hero/hero-motor-bg.jpg') }}" alt=""
+                            <img src="{{ asset('storage/' . $product->photo_path) }}" alt=""
                                 class="w-11/12 rounded-lg mr-5">
                             <div class="content">
                                 <h3 class="mb-5">{{ $product->name }}</h3>
@@ -182,7 +179,7 @@
                         <div class="w-full md:w-1/2 lg:w-4/12">
                             <div class="p-8 lg:px-3">
                                 <div class="content">
-                                    <img src="{{ asset('img/hero/hero-motor-bg.jpg') }}" alt=""
+                                    <img src="{{ asset('storage/' . $client->photo_path) }}" alt=""
                                         class="w-11/12 rounded-lg mr-5">
                                     <h3 class="mb-5 text-center">{{ $client->name }}</h3>
                                 </div>
