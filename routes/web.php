@@ -1,13 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +43,9 @@ Route::get('/', [DashboardController::class, 'index'])
 
 // Products
 Route::resource('products', ProductController::class)->except('show');
+
+// Clients
+Route::resource('clients', ClientController::class)->except('show');
 
 // Users
 

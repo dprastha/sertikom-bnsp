@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated());
+        Product::create($request->validated());
 
         return redirect()
             ->route('products.index')
